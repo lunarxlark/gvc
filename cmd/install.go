@@ -16,9 +16,11 @@ func ActToolInstall(ctx *cli.Context) error {
 	}
 
 	for _, ti := range tis {
-		log.Println(fmt.Sprintf("installing %s ... ", ti.Name))
-		if err := ti.GoGet(); err != nil {
-			return errors.Wrap(err, fmt.Sprintf("failed to install tool '%s'", ti.Name))
+		if ti.Enable {
+			log.Println(fmt.Sprintf("installing %s ... ", ti.Name))
+			if err := ti.GoGet(); err != nil {
+				return errors.Wrap(err, fmt.Sprintf("failed to install tool '%s'", ti.Name))
+			}
 		}
 	}
 	return nil
