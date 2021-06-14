@@ -70,22 +70,23 @@ func GetToolInfoList() (tis []*ToolInfo, err error) {
 
 var ignoreList = []string{
 	"golang.org",
+	"honnef.co",
 }
 
 func (ti *ToolInfo) GoGet() error {
 	// TODO : ダウンロード元のpackageをどうやって特定するか。
-	isGithub := true
+	hasDomain := false
 	for _, i := range ignoreList {
 		if strings.HasPrefix(ti.URL, i) {
-			isGithub = false
+			hasDomain = true
 		}
 	}
 
 	packages := ""
-	if isGithub {
+	if hasDomain {
 		packages = filepath.Join("github.com", ti.URL)
 	}
-	cmd := exec.Command("go", "get", "-u", packages)
+	cmd := exec.Command("go", "install", packages)
 	stdouterr, err := cmd.CombinedOutput()
 	if err != nil {
 		log.Println(string(stdouterr))
