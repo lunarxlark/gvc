@@ -73,9 +73,9 @@ var ignoreList = []string{
 	"honnef.co",
 }
 
-func ContainString(strs []string, substr string) (hasContain bool) {
+func HasSubString(substrs []string, str string) (hasContain bool) {
 	hasContain = false
-	for _, str := range strs {
+	for _, substr := range substrs {
 		if strings.Contains(str, substr) {
 			hasContain = true
 		}
@@ -85,7 +85,7 @@ func ContainString(strs []string, substr string) (hasContain bool) {
 
 func (ti *ToolInfo) GoGet() error {
 	// TODO : ダウンロード元のpackageをどうやって特定するか。
-	hasDomain := ContainString(ignoreList, ti.URL)
+	hasDomain := HasSubString(ignoreList, ti.URL)
 
 	packages := ""
 	if !hasDomain {
