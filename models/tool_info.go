@@ -83,7 +83,7 @@ func (ti *ToolInfo) GoGet() error {
 	}
 
 	packages := ""
-	if hasDomain {
+	if !hasDomain {
 		packages = filepath.Join("github.com", ti.URL)
 	}
 	cmd := exec.Command("go", "install", packages)
