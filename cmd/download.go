@@ -20,7 +20,7 @@ func ActDownload(ctx *cli.Context) error {
 	}
 
 	for _, i := range idx {
-		if err := vis[i].GoGet(); err != nil {
+		if err := vis[i].GoInstall(); err != nil {
 			return err
 		}
 		if err := vis[i].GoDownload(); err != nil {
