@@ -23,9 +23,9 @@ type VersionInfo struct {
 	File    []*BinaryFileInfo `json:"files"`
 }
 
-func (vi *VersionInfo) GoGet() error {
+func (vi *VersionInfo) GoInstall() error {
 	log.Print(fmt.Sprintf("getting %s ...", vi.Version))
-	cmd := exec.Command("go", "get", fmt.Sprintf("golang.org/dl/%s", vi.Version))
+	cmd := exec.Command("go", "install", fmt.Sprintf("golang.org/dl/%s", vi.Version))
 	stdouterr, err := cmd.CombinedOutput()
 	if err != nil {
 		fmt.Println(string(stdouterr))
