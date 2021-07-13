@@ -25,7 +25,7 @@ type VersionInfo struct {
 
 func (vi *VersionInfo) GoInstall() error {
 	log.Print(fmt.Sprintf("getting %s ...", vi.Version))
-	cmd := exec.Command("go", "install", fmt.Sprintf("golang.org/dl/%s", vi.Version))
+	cmd := exec.Command("go", "install", fmt.Sprintf("golang.org/dl/%s@latest", vi.Version))
 	stdouterr, err := cmd.CombinedOutput()
 	if err != nil {
 		fmt.Println(string(stdouterr))
