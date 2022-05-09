@@ -12,20 +12,18 @@ func ActDownload(ctx *cli.Context) error {
 		return err
 	}
 
-	idx, err := ff.FindMulti(vis, func(i int) string {
+	idx, err := ff.Find(vis, func(i int) string {
 		return vis[i].Version
 	})
 	if err != nil {
 		return err
 	}
 
-	for _, i := range idx {
-		if err := vis[i].GoInstall(); err != nil {
-			return err
-		}
-		if err := vis[i].GoDownload(); err != nil {
-			return err
-		}
+	if err := vis[idx].GoInstall(); err != nil {
+		return err
+	}
+	if err := vis[idx].GoDownload(); err != nil {
+		return err
 	}
 	return nil
 }
