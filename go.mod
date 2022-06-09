@@ -1,12 +1,12 @@
 module github.com/lunarxlark/gvc
 
-go 1.18
+go 1.17
 
 require (
 	github.com/adrg/xdg v0.4.0
 	github.com/ktr0731/go-fuzzyfinder v0.6.0
 	github.com/pkg/errors v0.9.1
-	github.com/urfave/cli/v2 v2.6.0
+	github.com/urfave/cli/v2 v2.8.1
 )
 
 require (
@@ -18,7 +18,8 @@ require (
 	github.com/nsf/termbox-go v0.0.0-20201124104050-ed494de23a00 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
+	github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673 // indirect
 	golang.org/x/sys v0.0.0-20211025201205-69cdffdb9359 // indirect
 	golang.org/x/term v0.0.0-20201210144234-2321bbc49cbf // indirect
-	golang.org/x/text v0.3.6 // indirect
+	golang.org/x/text v0.3.7 // indirect
 )
